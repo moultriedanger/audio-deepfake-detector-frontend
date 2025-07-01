@@ -7,8 +7,8 @@ const Nav = () => {
             <h1>Fake Or Real?</h1>
             <div className="links">
                 <a href="/">Home</a>
-                <a href="/demo">Product Demo</a>
-                <a href="sdfsdf">Source Code</a>
+                <a href="/product">Product Demo</a>
+                <a href="dfsdfs">Source Code</a>
             </div>
         </nav>
     )
