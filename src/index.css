@@ -54,3 +54,26 @@ code {
   display: flex;
   gap: 1rem;
 }
+
+.product-page-container{
+  display: flex;
+}
+
+/* Record Pannel */
+.recorder-container{
+  border:solid;
+  border-radius: 20px;
+}
+
+/* Recorder Controls */
+
+.recorder-button{
+  border-radius: 20px;
+}
+
+/* Product info section */
+.product-info-container{
+  border: solid;
+  border-color: black;
+  border-radius: 20px;
+}

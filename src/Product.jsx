@@ -1,7 +1,11 @@
+import RecordPannel from "./RecordPannel";
+import ProductInfo from "./ProductInfo"
+
 const Product = () => {
     return(
-        <div>
-            <h1>Product page!!!</h1>
+        <div className="product-page-container">
+            <ProductInfo/>
+            <RecordPannel/>
         </div>
     )
 
