@@ -1,4 +1,6 @@
 import { useState, useEffect} from 'react';
+import DetectButton from './DetectButton';
+import RestartButton from './RestartButton';
 
 const RecorderControls = () => {
     
@@ -7,7 +9,7 @@ const RecorderControls = () => {
 
     function startRecording(){
         setIsRecording(true)
-        console.log(isRecording)
+        setCounter(counter+1)
     }
 
     function stopRecording(){
@@ -16,24 +18,27 @@ const RecorderControls = () => {
             setCounter(1)
         }
         else{
-            setCounter(counter+2)
+            setCounter(counter+1)
         }
-        
-        console.log(isRecording)
     }
 
     useEffect(() => {
+        console.log(counter)
         console.log(isRecording)
 
-
-    }, [isRecording]);    
+    }, [isRecording, counter]);    
 
     return(
         <div className="button-container">
             <button className="recorder-button" onClick={startRecording}>Start</button>
             <button className="recorder-button" onClick={stopRecording}>Stop</button>
             {isRecording && <div>{"recording..."}</div>}
-            {counter % 2 != 0 && <div>{"ready to submit?"}</div>}
+            {counter % 2 !== 0 && <div>{"ready to submit?"}</div>}
+            {counter % 2 !== 0 && 
+            <div className='submit-controls'>
+                <DetectButton/>
+                <RestartButton/>
+            </div>}
         </div>
     )
 }
