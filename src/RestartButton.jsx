@@ -1,8 +1,10 @@
 import restart from "./restart.png"
 
+
 function handleRestart(){
     alert("restarted")
 }
+
 
 
 const RestartButton = () => {
