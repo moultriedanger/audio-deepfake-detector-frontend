@@ -15,19 +15,23 @@ const RecorderControls = () => {
   const streamRef = useRef(null);
   const chunksRef = useRef([]);
 
+  const initializeRecorder = async () => {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    streamRef.current = stream;
+    mediaRecorderRef.current = new MediaRecorder(stream);
+    setRecorderReady(true);
+  } catch (err) {
+    console.error("Microphone access failed:", err);
+    }
+  };
+
   useEffect(() => {
-  navigator.mediaDevices.getUserMedia({ audio: true })
-    .then(stream => {
-      streamRef.current = stream;
-      mediaRecorderRef.current = new MediaRecorder(stream);
-      setRecorderReady(true);
-    })
-    .catch(err => {
-      console.error('Microphone access failed:', err);
-    });
-  }, []);
+  initializeRecorder();
+}, []);
 
 function startRecording() {
+  console.log(mediaRecorderRef.current)
   const recorder = mediaRecorderRef.current;
   if (!recorder) {
     console.warn("Recorder not ready!");
@@ -98,7 +102,16 @@ function stopRecording() {
       {counter % 2 !== 0 &&
         <div className='submit-controls'>
           <DetectButton wavFile = {wavBlob}/>
-          <RestartButton />
+          <RestartButton 
+            setWavBlob = {setWavBlob} 
+            setCounter = {setCounter}
+            mediaRecorderRef = {mediaRecorderRef}
+            streamRef = {streamRef}
+            chunksRef = {chunksRef}
+            setRecorderReady = {setRecorderReady}
+            initializeRecorder = {initializeRecorder}
+            />
+          
         </div>
       }
     </div>
