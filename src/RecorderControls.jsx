@@ -2,14 +2,16 @@ import { useState, useEffect, useRef } from 'react';
 import DetectButton from './DetectButton';
 import RestartButton from './RestartButton';
 import { useWavConverter } from "./useWavConverter";
+import ResultBox from './ResultBox';
 
-const RecorderControls = () => {
+const RecorderControls = ({setDetectStatus}) => {
   const { blobToWav } = useWavConverter();
 
   const [isRecording, setIsRecording] = useState(false);
   const [counter, setCounter] = useState(0);
   const [recorderReady, setRecorderReady] = useState(false);
   const [wavBlob, setWavBlob] = useState(null);
+  // const [detectStatus, setDetectStatus] = useState(false)
 
   const mediaRecorderRef = useRef(null);
   const streamRef = useRef(null);
@@ -92,16 +94,17 @@ function stopRecording() {
   }, [isRecording, counter]);
 
   return (
-    <div className="button-container">
-      <button className="recorder-button" onClick={startRecording}>Start</button>
-      <button className="recorder-button" onClick={stopRecording}>Stop</button>
-
+    <div className="record-controls-wrapper">
+      <div className="button-container">
+        <button className="recorder-button" onClick={startRecording}>Start</button>
+        <button className="recorder-button" onClick={stopRecording}>Stop</button>
+      </div>
       {isRecording && <div>Recording...</div>}
       {counter % 2 !== 0 && <div>Ready to submit?</div>}
 
       {counter % 2 !== 0 &&
         <div className='submit-controls'>
-          <DetectButton wavFile = {wavBlob}/>
+          <DetectButton wavFile = {wavBlob} setDetectStatus = {setDetectStatus}/>
           <RestartButton 
             setWavBlob = {setWavBlob} 
             setCounter = {setCounter}
@@ -110,6 +113,7 @@ function stopRecording() {
             chunksRef = {chunksRef}
             setRecorderReady = {setRecorderReady}
             initializeRecorder = {initializeRecorder}
+            setDetectStatus = {setDetectStatus}
             />
           
         </div>

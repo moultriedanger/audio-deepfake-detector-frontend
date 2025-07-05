@@ -1,4 +1,4 @@
-const DetectButton = ({wavFile}) => {
+const DetectButton = ({wavFile, setDetectStatus}) => {
 
     async function handleDetect(){
         const url = 'http://127.0.0.1:5000/predict'
@@ -16,7 +16,10 @@ const DetectButton = ({wavFile}) => {
                 throw new Error(`Response status: ${response.status}`);
             }
             const result = response.json()
-            console.log("RESPONSE!!!",result)
+            console.log("RESPONSE!!!", result)
+            setDetectStatus(true)
+            console.log("detected!")
+          
         }
         catch (error){
             console.log(error)

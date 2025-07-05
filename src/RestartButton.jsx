@@ -10,6 +10,7 @@ const RestartButton = (props) => {
     let chunksRef = props.chunksRef;
     let setRecorderReady = props.setRecorderReady;
     let initializeRecorder = props.initializeRecorder;
+    let setDetectStatus = props.setDetectStatus;
 
 
     function handleRestart(){
@@ -20,6 +21,7 @@ const RestartButton = (props) => {
         console.log("Restarted!");
         initializeRecorder();
         console.log("initalized")
+        setDetectStatus(false)
     }
 
     return(
