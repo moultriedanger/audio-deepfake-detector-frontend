@@ -1,4 +1,3 @@
-// hooks/useWavConverter.js
 export function useWavConverter() {
   async function blobToWav(blob, sampleRate = 44100, numChannels = 1) {
     const arrayBuffer = await blob.arrayBuffer();

@@ -60,7 +60,7 @@ function startRecording() {
   try {
     recorder.start();
     setIsRecording(true);
-    // setCounter(prev => prev + 1);
+   
     console.log("Recorder started");
   } catch (e) {
     console.error("Failed to start recorder:", e);

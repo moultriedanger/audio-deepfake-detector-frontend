@@ -25,10 +25,7 @@ const DetectButton = ({wavFile}) => {
 
 
     return(
-        <div className="detect-button">
-            <button onClick={() => handleDetect()}>Detect Now</button>
-        </div>
+        <button className="detect-button" onClick={() => handleDetect()}>Detect Now</button>
     )
-
 }
 export default DetectButton

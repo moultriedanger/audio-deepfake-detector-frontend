@@ -55,62 +55,139 @@ code {
   gap: 1rem;
 }
 
-.product-page-container{
+.product-page-container {
   display: flex;
+  gap: 40px;
+  padding: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
 }
 
-/* Record Pannel */
-.recorder-container{
-  border:solid;
+.product-info-container {
+  flex: 1;
+  padding: 40px;
+  border-radius: 16px;
+  background-color: rgb(248, 249, 250); /* Light Grey */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: rgb(33, 37, 41); /* Dark Grey Text */
+}
+
+/* Heading */
+.product-info-container h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 24px;
+  background: linear-gradient(to right, rgb(75, 107, 240), rgb(130, 75, 240));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Paragraphs */
+.product-info-container p {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: rgb(108, 117, 125); /* Medium Grey Text */
+}
+
+/* Optional: bullet list look like mockup */
+.product-info-container p::before {
+  content: "✔️ ";
+  color: rgb(130, 75, 240); /* Deep Purple checkmark */
+  margin-right: 6px;
+}
+
+/* Recorder Panel */
+.recorder-container {
+  flex: 1;
+  padding: 30px;
+  border-radius: 16px;
+  background-color: rgb(248, 249, 250); /* Light Grey */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  color: rgb(33, 37, 41); /* Dark Grey Text */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Recorder Title */
+.recorder-container h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: rgb(75, 107, 240); /* Vibrant Blue */
+}
+
+/* Recorder Buttons */
+.recorder-button {
+  background-color: rgb(75, 107, 240);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 10px;
   border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-/* Recorder Controls */
-
-.recorder-button{
-  border-radius: 20px;
+.recorder-button:hover {
+  background-color: rgb(60, 90, 220);
 }
 
-/* Product info section */
-.product-info-container{
-  border: solid;
-  border-color: black;
-  border-radius: 20px;
-}
-
-.submit-controls{
+/* Submit Controls */
+.submit-controls {
   display: flex;
   flex-direction: row;
-  /* border: solid;
-  border-color: black; */
-  height: 50px;
-  gap: 10px; 
-  align-items: flex-start;
-
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
 }
 
-/* restart button */
+/* Detect Now Button */
+.detect-button {
+  background-color: rgb(75, 107, 240);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.detect-button:hover {
+  background-color: rgb(60, 90, 220);
+}
+
+/* Restart Button */
 .restart-button {
   width: 50px;
   height: 50px;
   padding: 0;
-  border: solid;
+  border: 2px solid rgb(130, 75, 240); /* Deep Purple border */
   border-radius: 10px;
-  background: none;
+  background: white;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  transition: border-color 0.2s ease;
 }
 
+.restart-button:hover {
+  border-color: rgb(108, 117, 125); /* Medium Grey */
+}
+
+/* Icon inside restart */
 .button-icon {
-  width: 100%;
-  height: 100%;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
-}
-
-.detect-button{
-
-  height: 50px;
 }
