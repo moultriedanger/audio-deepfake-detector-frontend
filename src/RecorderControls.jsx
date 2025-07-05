@@ -95,6 +95,7 @@ function stopRecording() {
 
   return (
     <div className="record-controls-wrapper">
+      <h1>Record Audio</h1>
       <div className="button-container">
         <button className="recorder-button" onClick={startRecording}>Start</button>
         <button className="recorder-button" onClick={stopRecording}>Stop</button>

@@ -258,10 +258,12 @@ Result Box Styling
 
 .embedded-wav-image {
   width: 100%;
-  max-width: 240px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  object-fit: contain;
+  max-width: 270px;
+  /* margin-bottom: 5x; */
+  padding:0;
+  border-radius: 12px;
+  height: 86px;
+  background-color: rgb(222, 226, 230);
 }
 
 
