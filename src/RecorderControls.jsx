@@ -102,7 +102,7 @@ function stopRecording() {
         <button className="recorder-button" onClick={stopRecording}>Stop</button>
       </div>
       {isRecording && <div><RecordingAnimation/></div>}
-      {counter % 2 !== 0 && <div>Ready to submit?</div>}
+      {counter % 2 !== 0 && <div className='submit-question'>Ready to submit?</div>}
 
       {counter % 2 !== 0 &&
         <div className='submit-controls'>

@@ -159,6 +159,14 @@ RECORDER BOX STYLING
   color: rgb(75, 107, 240); /* Vibrant Blue */
 }
 
+.submit-question{
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0px;
+  color: rgb(75, 107, 240);
+}
+
+
 /* Recorder Buttons */
 .recorder-button {
   background-color: rgb(75, 107, 240);
@@ -182,7 +190,7 @@ RECORDER BOX STYLING
   flex-direction: row;
   align-items: center;
   gap: 12px;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 /* Detect Now Button */
@@ -309,3 +317,72 @@ Result Box Styling
   align-items: center;
 }
 
+
+
+/* 
+Upload pannel
+*/
+.upload-pannel-wrapper {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.upload-pannel-wrapper h1 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.custom-file {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+  padding: 0 0.5rem;
+}
+
+.custom-file-label {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #555;
+  text-align: left;
+}
+
+.choose-button {
+  background-color: #1a73e8;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 8px 8px 0;
+}
+
+.hidden-file-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-name {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: #333;
+}
