@@ -1,4 +1,4 @@
-const DetectButton = ({wavFile, setDetectStatus}) => {
+const DetectButton = ({wavFile, setDetectStatus, setModelResults}) => {
 
     async function handleDetect(){
         const url = 'http://127.0.0.1:5000/predict'
@@ -15,11 +15,11 @@ const DetectButton = ({wavFile, setDetectStatus}) => {
             if (!response.ok) {
                 throw new Error(`Response status: ${response.status}`);
             }
-            const result = response.json()
+            const result = await response.json()
             console.log("RESPONSE!!!", result)
             setDetectStatus(true)
             console.log("detected!")
-          
+            setModelResults(result)
         }
         catch (error){
             console.log(error)

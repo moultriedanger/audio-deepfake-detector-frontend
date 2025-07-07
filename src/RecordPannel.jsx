@@ -4,11 +4,12 @@ import ResultBox from "./ResultBox"
 
 const RecordPannel = () => {
   const [detectStatus, setDetectStatus] = useState(false);
+  const [modelResults, setModelResults] = useState(null);
 
   return (
     <div className="recorder-container">
-        <RecorderControls setDetectStatus={setDetectStatus} />
-        {detectStatus && <ResultBox />}
+        <RecorderControls setDetectStatus={setDetectStatus} setModelResults = {setModelResults}/>
+        {detectStatus && <ResultBox modelResults = {modelResults}/>}
     </div>
 
   );

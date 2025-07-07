@@ -253,7 +253,7 @@ Result Box Styling
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 12px;
-  color: rgb(40, 167, 69); /* green */
+  /* color: rgb(40, 167, 69); green */
 }
 
 .embedded-wav-image {

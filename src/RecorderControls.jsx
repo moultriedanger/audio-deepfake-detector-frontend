@@ -4,14 +4,14 @@ import RestartButton from './RestartButton';
 import { useWavConverter } from "./useWavConverter";
 import ResultBox from './ResultBox';
 
-const RecorderControls = ({setDetectStatus}) => {
+const RecorderControls = ({setDetectStatus, setModelResults}) => {
   const { blobToWav } = useWavConverter();
 
   const [isRecording, setIsRecording] = useState(false);
   const [counter, setCounter] = useState(0);
   const [recorderReady, setRecorderReady] = useState(false);
   const [wavBlob, setWavBlob] = useState(null);
-  // const [detectStatus, setDetectStatus] = useState(false)
+  
 
   const mediaRecorderRef = useRef(null);
   const streamRef = useRef(null);
@@ -105,7 +105,7 @@ function stopRecording() {
 
       {counter % 2 !== 0 &&
         <div className='submit-controls'>
-          <DetectButton wavFile = {wavBlob} setDetectStatus = {setDetectStatus}/>
+          <DetectButton wavFile = {wavBlob} setDetectStatus = {setDetectStatus} setModelResults = {setModelResults}/>
           <RestartButton 
             setWavBlob = {setWavBlob} 
             setCounter = {setCounter}
