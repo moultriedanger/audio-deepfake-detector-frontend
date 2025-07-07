@@ -3,6 +3,7 @@ import DetectButton from './DetectButton';
 import RestartButton from './RestartButton';
 import { useWavConverter } from "./useWavConverter";
 import ResultBox from './ResultBox';
+import RecordingAnimation from './RecordingAnimation';
 
 const RecorderControls = ({setDetectStatus, setModelResults}) => {
   const { blobToWav } = useWavConverter();
@@ -100,7 +101,7 @@ function stopRecording() {
         <button className="recorder-button" onClick={startRecording}>Start</button>
         <button className="recorder-button" onClick={stopRecording}>Stop</button>
       </div>
-      {isRecording && <div>Recording...</div>}
+      {isRecording && <div><RecordingAnimation/></div>}
       {counter % 2 !== 0 && <div>Ready to submit?</div>}
 
       {counter % 2 !== 0 &&
