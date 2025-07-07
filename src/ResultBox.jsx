@@ -5,7 +5,7 @@ const ResultBox = ({modelResults}) => {
 
     const real = modelResults.binary_classification.real
 
-    const real_percentage = Math.round(real,2) * 100
+    const real_percentage = Math.round(real, 2) * 100
     console.log(real, real_percentage)
 
     function getColor(){
@@ -26,10 +26,10 @@ const ResultBox = ({modelResults}) => {
 
     return (
         <div className="result-box-embedded">
-        <h4 className="result-title">🎯 <span>Authenticity Score</span></h4>
+        <h4 className="result-title"><span>Authenticity Score:</span></h4>
         <div className="score" style={{color: getColor()}}>{real_percentage}%</div>
         <img src={wavImage} alt="Waveform" className="embedded-wav-image" />
-        <p className="result-text">The sampled media is likely {real > .5 ? "real": "fake"}</p>
+        <p className="result-text">The sampled media is most likely {real > .5 ? "real": "fake"}</p>
         </div>
     );
 };

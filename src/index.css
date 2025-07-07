@@ -317,13 +317,17 @@ Result Box Styling
   align-items: center;
 }
 
-
-
 /* 
 Upload pannel
 */
-.upload-pannel-wrapper {
-  max-width: 500px;
+.upload-pannel-wrapper{
+  display:flex;
+  gap: 40px;
+  align-items: center;
+
+
+  width: auto;        /* Let it grow full width */
+  max-width: 600px;   /* Adjust as needed */
   margin: 2rem auto;
   padding: 2rem;
   background-color: #f8f9fa;
@@ -333,33 +337,45 @@ Upload pannel
   font-family: sans-serif;
 }
 
-.upload-pannel-wrapper h1 {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  color: #333;
+.upload-controls-wrapper {
+  
+  
+}
+
+.upload-controls-wrapper h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 24px;
+  background: linear-gradient(to right, rgb(75, 107, 240), rgb(130, 75, 240));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .custom-file {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
   background-color: white;
-  padding: 0 0.5rem;
+  padding: 0;                
+  justify-content: flex-start;  
 }
+
 
 .custom-file-label {
   flex: 1;
-  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;                 /* Match padding with button */
   font-size: 1rem;
   color: #555;
-  text-align: left;
+  text-align: center;
+  white-space: nowrap;          /* Prevent label text from wrapping */
 }
-
-.choose-button {
+/* .choose-button {
   background-color: #1a73e8;
   color: white;
   padding: 0.75rem 1.5rem;
@@ -369,6 +385,22 @@ Upload pannel
   position: relative;
   overflow: hidden;
   border-radius: 0 8px 8px 0;
+} */
+
+.choose-button {
+  background-color: #1a73e8;
+  color: white;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 .hidden-file-input {
@@ -384,5 +416,16 @@ Upload pannel
 .file-name {
   margin-top: 0.75rem;
   font-size: 0.95rem;
-  color: #333;
+  color: #ab5cbf;
+}
+
+.upload-detect-button{
+  margin-top: 20px;
+  border-radius: 10px;
+
+
+  border: None;
+  background-color: #1a73e8;
+  padding: 12px;
+  color: white;
 }

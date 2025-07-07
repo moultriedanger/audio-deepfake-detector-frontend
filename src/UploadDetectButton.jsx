@@ -1,6 +1,6 @@
 import {useState} from "react"
 
-const UploadDetectButton = ({wavFile}) =>{
+const UploadDetectButton = ({wavFile, setModelResults}) =>{
 
     async function handleDetect(){
         const url = 'http://127.0.0.1:5000/predict'
@@ -18,9 +18,8 @@ const UploadDetectButton = ({wavFile}) =>{
                 throw new Error(`Response status: ${response.status}`);
             }
             const result = await response.json()
-            console.log("RESPONSE!!!", result)
-            console.log("detected!")
-            // setModelResults(result)
+            console.log("RESPONSE!!!", result.binary_classification)
+            setModelResults(result)
         }
         catch (error){
             console.log(error)
@@ -28,7 +27,7 @@ const UploadDetectButton = ({wavFile}) =>{
     }
 
     return (
-        <button onClick={() => handleDetect()}>Detect Now</button>
+        <button className="upload-detect-button" onClick={() => handleDetect()}>Detect Now</button>
     )
 
 }
