@@ -62,11 +62,11 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-**Audio Deepfake Detector** is a responsive frontend application built with React and Tailwind CSS that consumes a RESTful API which runs a CNN model to provide users a prediciton on whether the audio clip provided was synthetically generated or not. The idea for this applicaiton is that someone using social media can verify whether they are hearing a real person or not.
+**Audio Deepfake Detector** is a responsive frontend application built with React that consumes a RESTful Flask API which runs a CNN model to provide users with a prediciton on whether the audio clip provided was synthetically generated or not.
 
 ---
 
-![Job Wizard Screenshot](images/job_wizard.png)
+![Deepfake Detector Home Screenshot](app_images/home_image.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
