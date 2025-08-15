@@ -4,6 +4,8 @@ import wavImage from "./waveForm.png"
 const ResultBox = ({modelResults}) => {
 
     const real = modelResults.binary_classification.real
+    console.log(modelResults)
+    
 
     const real_percentage = Math.round(real, 2) * 100
     console.log(real, real_percentage)
