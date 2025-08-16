@@ -5,7 +5,6 @@ const ResultBox = ({modelResults}) => {
 
     const real = modelResults?.scores?.real;
     
-
     const real_percentage = Math.round(real, 2) * 100
     console.log(real, real_percentage)
 

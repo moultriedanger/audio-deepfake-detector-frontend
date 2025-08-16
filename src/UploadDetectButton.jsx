@@ -3,9 +3,12 @@ import {useState} from "react"
 
 const UploadDetectButton = ({wavFile, setModelResults}) =>{
 
+    const [loading, setLoading] = useState(false);
     const baseURL = import.meta.env.VITE_API_URL;
 
     async function handleDetect(){
+
+        setLoading(true);
         const url = `${baseURL}/predict`
         
 
@@ -24,6 +27,7 @@ const UploadDetectButton = ({wavFile, setModelResults}) =>{
             const result = await response.json()
             console.log("RESPONSE!!!", result.binary_classification)
             setModelResults(result)
+            setLoading(false)
         }
         catch (error){
             console.log(error)
@@ -31,7 +35,10 @@ const UploadDetectButton = ({wavFile, setModelResults}) =>{
     }
 
     return (
-        <button className="upload-detect-button" onClick={() => handleDetect()}>Detect Now</button>
+        <div>
+            <button className="upload-detect-button" onClick={() => handleDetect()}>Detect Now</button>
+            {loading && <div className="detecting-message">Detecting…</div>}
+        </div>
     )
 
 }

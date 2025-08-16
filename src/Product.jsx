@@ -1,6 +1,7 @@
 import RecordPannel from "./RecordPannel";
 import ProductInfo from "./ProductInfo"
 import UploadPannel from "./UploadPannel"
+import SampleDownload from "./SampleDownload";
 
 const Product = () => {
     return(
@@ -8,6 +9,8 @@ const Product = () => {
             <ProductInfo/>
             {/* <RecordPannel/> */}
             <UploadPannel/>
+            <SampleDownload/>
+
 
         </div>
     )
