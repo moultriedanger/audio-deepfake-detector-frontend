@@ -74,29 +74,32 @@ code {
   padding: 60px;
   max-width: 1200px;
   margin: 0 auto;
-  align-items: center;
+  align-items: flex-start; /* better than center so top edges align */
 }
 
-/* box rules */
+/* Default: two items side by side */
 .product-page-container > * {
   flex: 1 1 480px;       
   min-width: 280px;
 }
 
+/* Result box (3rd child): sits side by side instead of full width */
 .product-page-container > *:nth-child(3) {
   order: 3;
-  flex: 1 1 100%;
+  flex: 1 1 480px; /* side-by-side instead of forcing 100% */
 }
 
-/* Second item default: don't grow */
+/* Record panel (2nd child) default: compact */
 .product-page-container > *:nth-child(2) {
   flex: 0 1 auto; 
   max-width: 600px; 
 }
 
+/* Record panel (2nd child) when results exist: grow alongside result box */
 .product-page-container.has-results > *:nth-child(2) {
   flex: 1 1 480px;
 }
+
 
 .product-info-container {
   flex: 1;
@@ -139,18 +142,44 @@ code {
 /* 
 RECORDER BOX STYLING
 */
+/* Side-by-side inside recorder container */
 .recorder-container {
   display: flex;
-  flex-direction: row;
-  gap: 24px;
-  padding: 30px;
-  border-radius: 16px;
-  background-color: rgb(248, 249, 250);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
-  color: rgb(33, 37, 41);
   align-items: flex-start;
-  flex-wrap: wrap; /* optional, helps on smaller screens */
+  gap: 24px;
+  flex-wrap: nowrap;          /* keep them on one row when there’s space */
+}
+
+/* Left = RecorderControls (first child) */
+.recorder-container > :first-child {
+  flex: 0 0 280px;            /* fixed-ish left column */
+}
+
+/* Right = ResultBox (second child) */
+.recorder-container > :last-child {
+  flex: 1 1 0;                /* takes remaining space */
+  min-width: 0;               /* KEY: allows shrinking; prevents overflow */
+  overflow: hidden;           /* safety for wide inner content */
+}
+
+/* Images/canvas/waveforms inside the result box should not exceed the card */
+.recorder-container > :last-child img,
+.recorder-container > :last-child canvas,
+.recorder-container > :last-child svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 860px) {
+  .recorder-container {
+    flex-wrap: wrap;
+  }
+  .recorder-container > :first-child,
+  .recorder-container > :last-child {
+    flex: 1 1 100%;
+  }
 }
 
 .recorder-controls {
@@ -188,22 +217,29 @@ RECORDER BOX STYLING
   color: rgb(75, 107, 240);
 }
 
-
-/* Recorder Buttons */
+/* Recorder buttons */
 .recorder-button {
   background-color: rgb(75, 107, 240);
   color: white;
   border: none;
-  padding: 8px 16px;
-  margin-right: 10px;
-  border-radius: 20px;
+  padding: 8px 18px;
   font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .recorder-button:hover {
-  background-color: rgb(60, 90, 220);
+  background-color: rgb(65, 97, 230);
+  transform: translateY(-1px); /* small lift */
+  box-shadow: 0 3px 6px rgba(75, 107, 240, 0.25);
+}
+
+.recorder-button:active {
+  background-color: rgb(55, 85, 210);
+  transform: scale(0.97);
+  box-shadow: 0 2px 4px rgba(75, 107, 240, 0.4);
 }
 
 /* Submit Controls */
@@ -215,7 +251,7 @@ RECORDER BOX STYLING
   margin-top: 0px;
 }
 
-/* Detect Now Button */
+/* Record detect Button */
 .detect-button {
   background-color: rgb(75, 107, 240);
   color: white;
@@ -224,12 +260,22 @@ RECORDER BOX STYLING
   font-weight: 600;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .detect-button:hover {
-  background-color: rgb(60, 90, 220);
+  background-color: rgb(65, 97, 230);
+  transform: translateY(-1px); /* subtle lift */
+  box-shadow: 0 3px 6px rgba(75, 107, 240, 0.25);
 }
+
+.detect-button:active {
+  background-color: rgb(55, 85, 210);
+  transform: scale(0.97);
+  box-shadow: 0 2px 4px rgba(75, 107, 240, 0.4);
+}
+
 
 /* Restart Button */
 .restart-button {
@@ -304,11 +350,25 @@ Result Box Styling
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background-color: white;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  border-radius: 16px;
+  background-color: #f8f9fa; /* match upload */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  font-family: sans-serif;
 }
+
+
+.record-controls-wrapper h1{
+  background: linear-gradient(to right, rgb(75, 107, 240), rgb(130, 75, 240));
+  -webkit-background-clip: text;   
+  -webkit-text-fill-color: transparent; 
+  background-clip: text;          
+  color: transparent;              
+}
+
+
 
 /* Button container for start/stop */
 .button-container {
@@ -330,7 +390,7 @@ Result Box Styling
 
 .recorder-button:hover {
   background-color: rgb(60, 90, 220);
-}
+} 
 
 /* Submit Buttons container */
 .submit-controls {
@@ -347,9 +407,8 @@ Upload pannel
   gap: 40px;
   align-items: center;
 
-
-  width: auto;        /* Let it grow full width */
-  max-width: 600px;   /* Adjust as needed */
+  width: auto;        
+  max-width: 600px;   
   margin: 2rem auto;
   padding: 2rem;
   background-color: #f8f9fa;
@@ -380,29 +439,18 @@ Upload pannel
   justify-content: flex-start;  
 }
 
-
 .custom-file-label {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;                 /* Match padding with button */
+  padding: 1rem;              
   font-size: 1rem;
   color: #555;
   text-align: center;
-  white-space: nowrap;          /* Prevent label text from wrapping */
+  white-space: nowrap;         
 }
-/* .choose-button {
-  background-color: #1a73e8;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  border-radius: 0 8px 8px 0;
-} */
+
 
 .choose-button {
   background-color: #1a73e8;
@@ -502,4 +550,54 @@ audio {
   font-weight: 600; 
   color:rgb(124, 79, 213);
   font-style: italic;
+}
+
+
+.audio-panel-card {
+  flex: 0 0 auto;                 
+  width: fit-content;              
+  max-width: 100%;               
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 1.5rem;
+  transition: width .2s ease;
+}
+
+
+.audio-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.audio-panel-header h3{
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+
+  background: linear-gradient(to right, rgb(75, 107, 240), rgb(130, 75, 240));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.audio-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.audio-toggle button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #e9ecef;
+  color: #495057;
+  transition: background 0.2s, color 0.2s;
+}
+
+.audio-toggle button.active {
+  background: linear-gradient(to right, rgb(75, 107, 240), rgb(130, 75, 240));
+  color: white;
 }
