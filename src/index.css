@@ -77,16 +77,25 @@ code {
   align-items: center;
 }
 
-/* default: two items on the first row */
+/* box rules */
 .product-page-container > * {
   flex: 1 1 480px;       
   min-width: 280px;
 }
 
-/* Speechify panel on its own bottom row */
 .product-page-container > *:nth-child(3) {
-  order: 3;                 
-  flex: 0 0 100%;   
+  order: 3;
+  flex: 1 1 100%;
+}
+
+/* Second item default: don't grow */
+.product-page-container > *:nth-child(2) {
+  flex: 0 1 auto; 
+  max-width: 600px; 
+}
+
+.product-page-container.has-results > *:nth-child(2) {
+  flex: 1 1 480px;
 }
 
 .product-info-container {
@@ -348,11 +357,6 @@ Upload pannel
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   text-align: center;
   font-family: sans-serif;
-}
-
-.upload-controls-wrapper {
-  
-  
 }
 
 .upload-controls-wrapper h1 {
