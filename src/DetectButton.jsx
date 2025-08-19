@@ -1,7 +1,9 @@
 const DetectButton = ({wavFile, setDetectStatus, setModelResults}) => {
 
+    const baseURL = import.meta.env.VITE_API_URL;
+
     async function handleDetect(){
-        const url = 'http://127.0.0.1:5000/predict'
+        const url = `${baseURL}/predict`
 
         try {
             const formData = new FormData();
