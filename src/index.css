@@ -601,3 +601,15 @@ audio {
   background: linear-gradient(to right, rgb(75, 107, 240), rgb(130, 75, 240));
   color: white;
 }
+
+.submit-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;        /* allow items to wrap to a new line */
+}
+
+.detecting-line {
+  flex-basis: 100%;       /* take the whole row */
+  margin-top: 6px;
+}

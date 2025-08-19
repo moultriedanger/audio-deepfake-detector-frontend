@@ -12,6 +12,8 @@ const RecorderControls = ({setDetectStatus, setModelResults}) => {
   const [counter, setCounter] = useState(0);
   const [recorderReady, setRecorderReady] = useState(false);
   const [wavBlob, setWavBlob] = useState(null);
+
+  const [loading, setLoading] = useState(null);
   
 
   const mediaRecorderRef = useRef(null);
@@ -56,7 +58,6 @@ function startRecording() {
 
     const wavBlob = await blobToWav(blob, 44100, 1);
 
-    //save the blob to state
     setWavBlob(wavBlob);
   };
 
@@ -105,8 +106,9 @@ function stopRecording() {
       {counter % 2 !== 0 && <div className='submit-question'>Ready to submit?</div>}
 
       {counter % 2 !== 0 &&
+        <>
         <div className='submit-controls'>
-          <DetectButton wavFile = {wavBlob} setDetectStatus = {setDetectStatus} setModelResults = {setModelResults}/>
+          <DetectButton wavFile = {wavBlob} setDetectStatus = {setDetectStatus} setModelResults = {setModelResults} setLoading = {setLoading}/>
           <RestartButton 
             setWavBlob = {setWavBlob} 
             setCounter = {setCounter}
@@ -117,8 +119,13 @@ function stopRecording() {
             initializeRecorder = {initializeRecorder}
             setDetectStatus = {setDetectStatus}
             />
-          
         </div>
+        {loading && (
+        <div className="detecting-message" style={{ flexBasis: '100%', marginTop: 6 }}>
+          Detecting…
+        </div>
+      )}
+        </>
       }
     </div>
   );
