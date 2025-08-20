@@ -575,6 +575,7 @@ audio {
   font-size: 1.3rem;
   font-weight: 700;
   margin: 0;
+  margin-right: 10px;
 
   background: linear-gradient(to right, rgb(75, 107, 240), rgb(130, 75, 240));
   -webkit-background-clip: text;
